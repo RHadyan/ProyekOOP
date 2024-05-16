@@ -53,17 +53,16 @@ $(document).ready(function () {
 
         var href = $(this).attr('href');
 
-        $.get(href, function(fasilitasData) {
+        $.get(href, function(homeData) {
             // Use the fasilitasData object instead of 'fasilitas'
-            $('#idEdit').val(fasilitasData.id);
-            $('#gambarBeforeEdit').val(fasilitasData.ImageFileName);
-            $('#gambarEdit').attr('src', '/images/' + fasilitasData.imageFileName);
-            console.log(fasilitasData.id);
-            console.log(fasilitasData.nameFasilitas);
-            console.log(fasilitasData.imageFileName);
+            $('#idEdit').val(homeData.id);
+            $('#gambarBeforeEdit').val(homeData.ImageFileName);
+            $('#gambarEdit').attr('src', '/images/' + homeData.imageFileName);
+            console.log(homeData.id);
+            console.log(homeData.nameFasilitas);
+            console.log(homeData.imageFileName);
 
         });
-
         $('#editModal').modal();
     });
 
