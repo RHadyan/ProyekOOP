@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    // edit halaman fasilitas
     $('.buton-edit').on('click', function(event) {
         event.preventDefault();
 
@@ -46,5 +47,24 @@ $(document).ready(function () {
         });
     });
 
+// edit halaman home
+    $('.buton-edit-home').on('click', function(event) {
+        event.preventDefault();
+
+        var href = $(this).attr('href');
+
+        $.get(href, function(fasilitasData) {
+            // Use the fasilitasData object instead of 'fasilitas'
+            $('#idEdit').val(fasilitasData.id);
+            $('#gambarBeforeEdit').val(fasilitasData.ImageFileName);
+            $('#gambarEdit').attr('src', '/images/' + fasilitasData.imageFileName);
+            console.log(fasilitasData.id);
+            console.log(fasilitasData.nameFasilitas);
+            console.log(fasilitasData.imageFileName);
+
+        });
+
+        $('#editModal').modal();
+    });
 
 });

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class KamarController {
     @GetMapping({"","/"})
     public String ShowKamar(Model model) {
-        return "/Admin/";
+        return "/Admin/kamar";
     }
 
 }

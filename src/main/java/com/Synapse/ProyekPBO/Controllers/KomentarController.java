@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/komentar")
 public class KomentarController {
 
-
     @GetMapping({"","/"})
     public String ShowKomentar(Model model) {
         return "/Admin/komentar";

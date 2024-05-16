@@ -43,7 +43,7 @@ public class FasilitasController {
 
         return "/Admin/photos-fasilitas";
     }
-
+//add data
     @PostMapping({"","/"})
     public String CreateFasilitas(
             @Valid @ModelAttribute FasilitasDto fasilitasDto,
@@ -53,7 +53,7 @@ public class FasilitasController {
             result.addError(new FieldError("fasilitasDto","imageFile","the image file is missing"));
         }
         if (result.hasErrors()){
-            return  "/Admin/photos-fasilitas";
+            return  "redirect:/fasilitas";
         }
 //        add image
         MultipartFile image = fasilitasDto.getImageFile();

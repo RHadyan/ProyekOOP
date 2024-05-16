@@ -24,16 +24,16 @@
                 <li class=""><a href="/fasilitas" class="text-decoration-none px-3 py-2 d-block"><i
                         class="fal fa-list"></i>
                     Fasilitas</a></li>
-                <li class="active"><a href="/home-admin" class="text-decoration-none px-3 py-2 d-block"><i
+                <li class="active"><a href="/home" class="text-decoration-none px-3 py-2 d-block"><i
                         class="fal fa-list"></i>
                     Home</a></li>
-                <li class=""><a href="/kamar-admin"
+                <li class=""><a href="/kamar"
                                 class="text-decoration-none px-3 py-2 d-block d-flex justify-content-between">
                     <span><i class="fal fa-comment"></i> Kamar</span>
                     <!-- <span class="bg-dark rounded-pill text-white py-0 px-2">02</span> comment for komentar nanti siapa tau menarik  -->
                 </a>
                 </li>
-                <li class=""><a href="/komentar-admin" class="text-decoration-none px-3 py-2 d-block"><i
+                <li class=""><a href="/komentar" class="text-decoration-none px-3 py-2 d-block"><i
                         class="fal fa-envelope-open-text"></i> Komentar</a></li>
 
             </ul>
@@ -50,11 +50,11 @@
                     More</a>
                 <div class="wrapper-photos">
                     <div class="row mx-auto ">
-                        <div class="card card-home-photos pt-3 rounded-4 mx-auto mt-5  mb-5 col-md-4"
+                        <div th:each="home : ${homes}" class="card card-home-photos pt-3 rounded-4 mx-auto mt-5  mb-5 col-md-4"
                             style="width: 15rem;">
-                            <img src="../images/carrousel-1.png" class="card-img-top" alt="...">
+                            <img th:src="@{'/images/' + ${home.imageFileName}}" class="card-img-top" alt="...">
                             <div class="card-body text-center">
-                                <a href="#" data-bs-toggle="modal" data-bs-target="#editModal"
+                                <a th:href="@{/home/edit/{id}(id=${home.id})}" data-bs-toggle="modal" data-bs-target="#editModal"
                                     class="btn btn-warning">Edit</a>
                                 <a href="#" class="btn btn-danger">Delete</a>
                             </div>
@@ -73,14 +73,14 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Add Photos</h1>
+                        <h1 class="modal-title fs-5" id="addPhotos">Add Photos</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form method="post" enctype="multipart/form-data">
+                        <form method="post" enctype="multipart/form-data" th:object="${homeDto}">
                             <div class="mb-3">
-                                <label for="message-text" class="col-form-label">Gambar : </label>
-                                <input type="file" class="form-control">
+                                <label for="messages-text"  class="col-form-label">Gambar : </label>
+                                <input name="messages-text"  type="file" class="form-control" th:field="${homeDto.imageFile}">
                             </div>
                     </div>
                     <div class="modal-footer">
@@ -97,17 +97,19 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Photos</h1>
+                        <h1 class="modal-title fs-5" id="editPhotos">Edit Photos</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form method="post" enctype="multipart/form-data">
+                        <form method="post" id="editForm" action="/fasilitas/update" enctype="multipart/form-data">
                             <div class="mb-3">
                                 <label for="message-text" class="col-form-label">Gambar : </label>
-                                <input type="file" class="form-control">
+                                <img src="" class= " mb-4 ms-4" id="gambarEdit" name="gambarEdit" alt="">
+                                <input type="file" id="gambarAfterEdit" name="imageFileName" class="form-control">
                             </div>
                     </div>
                     <div class="modal-footer">
+                        <!--                        <input type="hidden" id="idEdit" name="id">-->
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
@@ -117,7 +119,7 @@
         </div>
 
 
-
+        <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
         </script>
