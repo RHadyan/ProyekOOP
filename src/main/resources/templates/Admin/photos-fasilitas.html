@@ -27,7 +27,7 @@
                 <li class=""><a href="/home" class="text-decoration-none px-3 py-2 d-block"><i
                         class="fal fa-list"></i>
                     Home</a></li>
-                <li class=""><a href="/kamar-admin"
+                <li class=""><a href="/kamar"
                                 class="text-decoration-none px-3 py-2 d-block d-flex justify-content-between">
                     <span><i class="fal fa-comment"></i> Kamar</span>
                     <!-- <span class="bg-dark rounded-pill text-white py-0 px-2">02</span> comment for komentar nanti siapa tau menarik  -->
@@ -106,7 +106,6 @@
         </div>
 
 <!--edit modal-->
-
         <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -115,16 +114,16 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form method="post" id="editForm" action="/update" enctype="multipart/form-data">
+                        <form method="post" id="editForm" action="/fasilitas/update" enctype="multipart/form-data">
                             <div class="mb-3">
+                                <input type="hidden" name="id" id="idEdit">
                                 <label for="namefasilitas" class="col-form-label">Nama Fasilitas : </label>
-                                <input type="text" class="form-control" id="namefasilitas">
+                                <input type="text" class="form-control" id="namefasilitas" name="nameFasilitas">
                             </div>
                             <div class="mb-3">
                                 <label for="message-text" class="col-form-label">Gambar : </label>
-                                <img src="" class= " mb-4 ms-4" id="gambarEdit" alt="">
-                                <input type="file" class="form-control">
-                                <input type="hidden" name="id" id="idEdit">
+                                <img src="" class= " mb-4 ms-4" id="gambarEdit" name="gambarEdit" alt="">
+                                <input type="file" id="gambarAfterEdit" name="imageFileName" class="form-control">
                             </div>
                     </div>
                     <div class="modal-footer">

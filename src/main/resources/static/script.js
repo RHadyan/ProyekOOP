@@ -7,7 +7,6 @@ $(document).ready(function () {
         $.get(href, function(fasilitasData) {
             // Use the fasilitasData object instead of 'fasilitas'
             $('#idEdit').val(fasilitasData.id);
-
             $('#namefasilitas').val(fasilitasData.nameFasilitas);
             $('#gambarBeforeEdit').val(fasilitasData.ImageFileName);
             $('#gambarEdit').attr('src', '/images/' + fasilitasData.imageFileName);
@@ -38,6 +37,9 @@ $(document).ready(function () {
                 location.reload(); // Refresh halaman untuk melihat perubahan
             },
             error: function(jqXHR, textStatus, errorThrown) {
+                for (const value of formData.values()) {
+                    console.log(value);
+                }
                 console.log("Error: " + textStatus + " " + errorThrown);
                 // Tampilkan pesan error atau lakukan sesuatu
             }

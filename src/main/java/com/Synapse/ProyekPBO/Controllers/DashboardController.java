@@ -1,4 +1,4 @@
 package com.Synapse.ProyekPBO.Controllers;
 
-public class SewaController {
+public class DashboardController {
 }
