@@ -157,3 +157,6 @@ body {
     background-color: #495057; /* Warna latar saat hover */
     border-radius: 4px; /* Sedikit membulatkan sudut */
 }
+img{
+    object-fit: cover;
+}

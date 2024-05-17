@@ -44,47 +44,47 @@ public class FasilitasController {
         return "/Admin/photos-fasilitas";
     }
 //add data
-    @PostMapping({"","/"})
-    public String CreateFasilitas(
-            @Valid @ModelAttribute FasilitasDto fasilitasDto,
-            BindingResult result){
+@PostMapping({"","/"})
+public String CreateFasilitas(
+        @Valid @ModelAttribute FasilitasDto fasilitasDto,
+        BindingResult result){
 
-        if (fasilitasDto.getImageFile().isEmpty()){
-            result.addError(new FieldError("fasilitasDto","imageFile","the image file is missing"));
-        }
-        if (result.hasErrors()){
-            return  "redirect:/fasilitas";
-        }
-//        add image
-        MultipartFile image = fasilitasDto.getImageFile();
-        Date createAt = new Date();
-        String storageFileName = createAt.getTime() + "_" + image.getOriginalFilename();
-        try {
-            String uploadDir = "public/images/";
-            Path uploadPath = Paths.get(uploadDir);
-
-            if (!Files.exists(uploadPath)){
-                Files.createDirectories(uploadPath);
-            }
-            try(InputStream inputStream = image.getInputStream()){
-                Files.copy(inputStream, Paths.get(uploadDir + storageFileName),
-                        StandardCopyOption.REPLACE_EXISTING);
-
-            }
-
-        }catch (Exception ex){
-            System.out.println("Exception" + ex.getMessage());
-        }
-
-        FasilitasModels fasilitas = new FasilitasModels();
-        fasilitas.setNameFasilitas(fasilitasDto.getNameFasilitas());
-        fasilitas.setImageFileName(storageFileName);
-        fasilitas.setCreateAt(createAt);
-
-        repo.save(fasilitas);
-
-        return "redirect:/fasilitas";
+    if (fasilitasDto.getImageFile().isEmpty()){
+        result.addError(new FieldError("fasilitasDto","imageFile","the image file is missing"));
     }
+    if (result.hasErrors()){
+        return  "redirect:/fasilitas";
+    }
+//        add image
+    MultipartFile image = fasilitasDto.getImageFile();
+    Date createAt = new Date();
+    String storageFileName = createAt.getTime() + "_" + image.getOriginalFilename();
+    try {
+        String uploadDir = "public/images/";
+        Path uploadPath = Paths.get(uploadDir);
+
+        if (!Files.exists(uploadPath)){
+            Files.createDirectories(uploadPath);
+        }
+        try(InputStream inputStream = image.getInputStream()){
+            Files.copy(inputStream, Paths.get(uploadDir + storageFileName),
+                    StandardCopyOption.REPLACE_EXISTING);
+
+        }
+
+    }catch (Exception ex){
+        System.out.println("Exception" + ex.getMessage());
+    }
+
+    FasilitasModels fasilitas = new FasilitasModels();
+    fasilitas.setNameFasilitas(fasilitasDto.getNameFasilitas());
+    fasilitas.setImageFileName(storageFileName);
+    fasilitas.setCreateAt(createAt);
+
+    repo.save(fasilitas);
+
+    return "redirect:/fasilitas";
+}
 
     @GetMapping("delete/{id}")
     public String deleteProduct(@PathVariable int id){

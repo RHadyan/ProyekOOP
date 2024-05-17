@@ -83,11 +83,77 @@ public class HomeController {
             return "redirect:/home";
         }
 
-    @GetMapping("edit/{id}")
-    @ResponseBody
-    public ResponseEntity<HomeModels> getHomeById(@PathVariable int id) {
-        HomeModels home = repo.findById(id).orElseThrow(() -> new RuntimeException("Fasilitas not found"));
-        return ResponseEntity.ok(home);
-    }
+
+        @GetMapping("edit/{id}")
+        @ResponseBody
+        public ResponseEntity<HomeModels> getHomeById(@PathVariable int id) {
+            HomeModels home = repo.findById(id).orElseThrow(() -> new RuntimeException("Fasilitas not found"));
+            return ResponseEntity.ok(home);
+        }
+
+
+        @GetMapping("delete/{id}")
+        public String deleteProduct(@PathVariable int id){
+
+            try {
+                HomeModels home = repo.findById(id).get();
+
+                Path imagePath = Paths.get("public/images/" + home.getImageFileName());
+
+                try {
+                    Files.delete(imagePath);
+                }catch (Exception ex){
+                    System.out.println("Exception" + ex.getMessage());
+                }
+
+                repo.delete(home);
+
+            }
+            catch (Exception ex){
+                System.out.println("Exception" + ex.getMessage());
+
+
+            }
+            return "redirect:/home";
+        }
+
+        @PostMapping("/update")
+        public String updateFasilitas(
+                @RequestParam int id,
+                @RequestParam("imageFileName") MultipartFile imageFileName) {
+            System.out.println("ID: " + id);
+            System.out.println("Image File: " + imageFileName.getOriginalFilename());
+            try {
+                HomeModels home = repo.findById(id).orElseThrow(() -> new RuntimeException("Fasilitas not found"));
+
+                // Update nama fasilitas
+
+                // Jika ada file gambar baru, simpan file baru dan update nama file
+                if (!imageFileName.isEmpty()) {
+                    String uploadDir = "public/images/";
+                    String storageFileName = new Date().getTime() + "_" + imageFileName.getOriginalFilename();
+                    Path uploadPath = Paths.get(uploadDir);
+
+                    if (!Files.exists(uploadPath)) {
+                        Files.createDirectories(uploadPath);
+                    }
+                    try (InputStream inputStream = imageFileName.getInputStream()) {
+                        Files.copy(inputStream, Paths.get(uploadDir + storageFileName), StandardCopyOption.REPLACE_EXISTING);
+                        // Hapus file lama
+                        Path oldImagePath = Paths.get(uploadDir + home.getImageFileName());
+                        Files.deleteIfExists(oldImagePath);
+                        // Set nama file baru
+                        home.setImageFileName(storageFileName);
+                    }
+                }
+
+                repo.save(home);
+
+            } catch (Exception ex) {
+                System.out.println("Exception: " + ex.getMessage());
+            }
+            return "redirect:/home";
+        }
+
 
 }

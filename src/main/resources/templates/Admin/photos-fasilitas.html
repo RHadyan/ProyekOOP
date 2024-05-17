@@ -54,7 +54,7 @@
                             <img th:src="@{'/images/' + ${fasilitas.imageFileName}}" width="200px"  class="card-img-top" alt="...">
                             <div class="card-body text-center">
                                 <p th:text="${fasilitas.nameFasilitas}"></p>
-                                <a th:href="@{/fasilitas/edit/{id}(id=${fasilitas.id})}" data-bs-toggle="modal" data-bs-target="#editModal" class="buton-edit-home btn btn-warning">Edit</a>
+                                <a th:href="@{/fasilitas/edit/{id}(id=${fasilitas.id})}" data-bs-toggle="modal" data-bs-target="#editModal" class="buton-edit btn btn-warning">Edit</a>
                                 <a th:href="@{/fasilitas/delete/{id}(id=${fasilitas.id})}" onclick="return confirm('aseli bg?')" class="btn btn-danger">Delete</a>
                             </div>
                         </div>
@@ -71,7 +71,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Add Photos</h1>
+                        <h1 class="modal-title fs-5" id="">Add Photos</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
