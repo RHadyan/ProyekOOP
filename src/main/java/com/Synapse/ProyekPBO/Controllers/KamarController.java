@@ -2,7 +2,7 @@ package com.Synapse.ProyekPBO.Controllers;
 
 import com.Synapse.ProyekPBO.Models.KamarDto;
 import com.Synapse.ProyekPBO.Models.KamarModels;
-import com.Synapse.ProyekPBO.Services.KamarRepository;
+import com.Synapse.ProyekPBO.Repository.KamarRepository;
 
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

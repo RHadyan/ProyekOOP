@@ -24,18 +24,34 @@
     </nav>
 </div>
 <div class="container-fluid">
+    <div th:if="${param.usernotfound}" class="alert alert-danger mt-3" >
+        Kamu bukan admin
+    </div>
+    <div th:if="${param.error}" class="alert alert-warning mt-3" >
+        Password atau Username Salah!
+    </div>
+    <div th:if="${param.logout}" class="alert alert-danger mt-3" >
+        Berhasil Logout!
+    </div>
+<div th:if="${param.success}" class="alert alert-success mt-3" >
+    Register Berhasil!
+</div>
 
+</div>
     <div class="row">
         <div class="col-md-5 my-auto ">
-            <h1 class="text-admin text-center">Admin</h1>
+            <h1 class="text-admin text-center">Login</h1>
 
             <div class="form-login container">
-                <form action="">
+                <form method="post" th:action="@{/login}">
                     <label class="form-label" for="">Username</label>
-                    <input type="text" class="form-control">
+                    <input id="username" name="username" placeholder="Username" type="text" class="form-control">
                     <label class="form-label mt-2" for="">Password</label>
-                    <input type="password" class="form-control">
-                    <a href="" class="container btnMasuk btn btn-success mt-5">Masuk</a>
+                    <input id="password" name="password" type="password" placeholder="Password" class="form-control">
+<!--                    <a href="" class="container btnMasuk btn btn-success mt-5">Masuk</a>-->
+                    <a href="/register" class="btn btn-warning mt-2">Tidak Punya akun? Daftar disini</a>
+                    <button  type="submit" value="Log in" class="container btnMasuk btn btn-success mt-5">Login</button>
+
                 </form>
             </div>
 

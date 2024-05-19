@@ -1,7 +1,7 @@
 package com.Synapse.ProyekPBO.Controllers;
 import com.Synapse.ProyekPBO.Models.FasilitasDto;
 import com.Synapse.ProyekPBO.Models.FasilitasModels;
-import com.Synapse.ProyekPBO.Services.FasilitasRepository;
+import com.Synapse.ProyekPBO.Repository.FasilitasRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,15 +16,10 @@ import java.nio.file.StandardCopyOption;
 import java.util.Date;
 import java.util.List;
 
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.util.List;
-
-import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 @Controller
 @RequestMapping("/fasilitas")

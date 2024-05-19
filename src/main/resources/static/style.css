@@ -261,3 +261,7 @@ body {
 .login-admin input{
   background-color: #D9D9D9;
 }
+
+.sewa img{
+  object-fit: cover;
+}

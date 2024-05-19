@@ -1,12 +1,9 @@
 package com.Synapse.ProyekPBO.Controllers;
 
 
-import com.Synapse.ProyekPBO.Models.FasilitasDto;
-import com.Synapse.ProyekPBO.Models.FasilitasModels;
 import com.Synapse.ProyekPBO.Models.HomeDto;
 import com.Synapse.ProyekPBO.Models.HomeModels;
-import com.Synapse.ProyekPBO.Services.FasilitasRepository;
-import com.Synapse.ProyekPBO.Services.HomeRepository;
+import com.Synapse.ProyekPBO.Repository.HomeRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

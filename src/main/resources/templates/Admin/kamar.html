@@ -57,11 +57,11 @@
                             <div class="card-body text-center">
                                 <h6 th:text="${kamar.namaKamar}"></h6>
                                 <h5>Status : <span th:text="${kamar.status}" ></span> </h5>
+
                                 <a th:href="@{/kamar/edit/{id}(id=${kamar.id})}" data-bs-toggle="modal" data-bs-target="#editModal" class="buton-edit-kamar btn btn-warning">Edit</a>
                                 <a th:href="@{/kamar/delete/{id}(id=${kamar.id})}" onclick="return confirm('aseli bg?')" class="btn btn-danger">Delete</a>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -92,7 +92,7 @@
                             <label for="message-text" class="col-form-label">Status : </label>
                             <select class="form-control" th:field="${kamarDto.status}">
                                 <option value="kosong">Kosong</option>
-                                <option value="ada">Ada</option>
+                                <option value="terisi">Terisi</option>
                             </select>
                         </div>
                 </div>
@@ -131,7 +131,7 @@
                             <label for="message-text" class="col-form-label">Status : </label>
                             <select class="form-control"  id="status" name="status">
                                 <option value="kosong">Kosong</option>
-                                <option value="ada">Ada</option>
+                                <option value="terisi">Terisi</option>
                             </select>
                         </div>
                 </div>

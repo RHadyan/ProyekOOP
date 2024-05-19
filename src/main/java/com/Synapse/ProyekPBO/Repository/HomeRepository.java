@@ -1,4 +1,4 @@
-package com.Synapse.ProyekPBO.Services;
+package com.Synapse.ProyekPBO.Repository;
 
 import com.Synapse.ProyekPBO.Models.HomeModels;
 import org.springframework.data.jpa.repository.JpaRepository;
