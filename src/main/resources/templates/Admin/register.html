@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <link href="asset/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body class="login-admin">
+<div class="container-fluid nav-bg">
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <a class="navbar-brand" href="#">
+          <img src="images/Logo.png" alt="Logo" width="270" height="66"
+               class="d-inline-block align-text-top">
+        </a>
+      </div>
+    </div>
+  </nav>
+</div>
+<div class="container-fluid">
+
+
+
+  <div class="row">
+    <div class="col-md-5 my-auto ">
+      <h1 class="text-admin text-center mt-5">Register</h1>
+
+      <div class="form-login container">
+        <form method="post" action="/register/save" th:object="${user}">
+          <label class="form-label" for="">Username</label>
+          <input placeholder="Username" th:field="*{username}" type="text" class="form-control">
+          <p th:if="${#fields.hasErrors('username')}" class="text-danger"></p>
+
+          <label class="form-label mt-2" for="">Email</label>
+          <input  placeholder="Email" th:field="*{email}" type="text" class="form-control">
+          <p th:if="${#fields.hasErrors('email')}" class="text-danger"></p>
+
+          <label class="form-label mt-2" for="">Password</label>
+          <input placeholder="Password" th:field="*{password}" type="password" class="form-control">
+           <p th:if="${#fields.hasErrors('password')}" class="text-danger"></p>
+
+          <button  type="submit" class="container btnMasuk btn btn-success mt-5">Register</button>
+          <button  type="submit" class="container btnMasuk btn btn-success mt-5">Log</button>
+
+          <!-- <a href="" >Masuk</a> -->
+        </form>
+      </div>
+
+    </div>
+    <div class="col-md d-flex mt-4 border-5">
+      <img class="img-login" src="images/sewa-bg.png" width="800px" alt="">
+    </div>
+  </div>
+</div>
+
+
+<div class="mt-5">
+  <footer style="background-color: #283618;">
+    <div class="container p-5">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 mb-4">
+          <h5 class="mb-3 text-white" style="letter-spacing: 2px;">KONTEN</h5>
+          <ul class="list-unstyled mb-0">
+            <li class="mb-1  text-white">
+              <a href="#!" class="list-footer text-white">Kos - kosan Profile</a>
+            </li>
+            <li class="mb-1  text-white">
+              <a href="#!" class="list-footer text-white">Fasilitas</a>
+            </li>
+            <li class="mb-1  text-white">
+              <a href="#!" class="list-footer text-white">Sewa</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-lg-6 col-md-6 mb-4">
+          <h5 class="mb-3 text-white" style="letter-spacing: 2px;">Kontak Informasi</h5>
+          <ul class="list-unstyled mb-0">
+            <li class="mb-1  text-white">
+              <a href="#!" class="list-footer text-white">Kos - kosan Profile</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+    <div class="text-center p-4 text-white" style="background-color: rgba(0, 0, 0, 0.2);">
+      <img src="images/Logo.png" width="10%" alt=""> Copyright © 2024 SYNAPSE All rights reserved.
+    </div>
+    <!-- Copyright -->
+  </footer>
+
+</div>
+</body>
+
+</html>
