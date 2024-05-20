@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 
-<body>
+<body class="index">
     <!-- Navbar -->
     <div class="container-shared-background">
         <nav class="navbar navbar-expand-lg nav-trans">
@@ -169,39 +169,26 @@
 
     <div class="container text-dark">
         <h1 class="kelebihan-text mt-5">Komentar</h1>
-        <div class="comment-container bg-white rounded mt-4">
-            <div class="row align-items-center">
-                <div class="col-md-2 d-flex justify-content-center align-items-center">
-                    <img src="images/avatar1.png" alt="Avatar">
-                </div>
-                <div class="col-md-10">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum non tenetur fugiat iure est ut
-                        voluptatibus officiis provident corporis ex rem perspiciatis, perferendis quas, sed aspernatur
-                        eum! Eos, consequuntur laboriosam.</p>
-                </div>
-            </div>
-        </div>
-        <div class="comment-container bg-white rounded mt-4">
-            <div class="row align-items-center">
-                <div class="col-md-2 d-flex justify-content-center align-items-center">
-                    <img src="images/avatar1.png" alt="Avatar">
-                </div>
-                <div class="col-md-10">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum non tenetur fugiat iure est ut
-                        voluptatibus officiis provident corporis ex rem perspiciatis, perferendis quas, sed aspernatur
-                        eum! Eos, consequuntur laboriosam.</p>
-                </div>
-            </div>
-        </div>
-        <div class="comment-container bg-white rounded mt-4">
-            <div class="row align-items-center">
-                <div class="col-md-2 d-flex justify-content-center align-items-center">
-                    <img src="images/avatar1.png" alt="Avatar">
-                </div>
-                <div class="col-md-10">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum non tenetur fugiat iure est ut
-                        voluptatibus officiis provident corporis ex rem perspiciatis, perferendis quas, sed aspernatur
-                        eum! Eos, consequuntur laboriosam.</p>
+        <div class="row gap-5 kontener-gambar">
+            <div class="card" th:each="komentar : ${komentars}"  th:if="${komentar.statusTampil == 'True'}"style="width: 18rem;">
+                <img src="images/avatar1.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${komentar.username}"></h5>
+                    <p class="card-text" th:text="${komentar.komentar}"></p>
+                        <svg style="margin-bottom: 20px" xmlns="http://www.w3.org/2000/svg" width="29" height="27" viewBox="0 0 29 27" fill="none" class="inline">
+                            <path
+                                    d="M27.7942 12.3568L22.166 17.2113L23.8807 24.4713C23.9753 24.8654 23.951 25.2787 23.8107 25.6589C23.6704
+                     26.0392 23.4206 26.3694 23.0927 26.6078C22.7648 26.8462 22.3735 26.9821 21.9684 26.9984C21.5633 27.0146 21.1624 26.9105
+                     20.8164 26.6991L14.5003 22.8135L8.18033 26.6991C7.83441 26.9093 7.43402 27.0124 7.02958 26.9955C6.62514 26.9787 6.23473 26.8426
+                     5.90751 26.6044C5.58029 26.3662 5.33089 26.0366 5.19072 25.657C5.05055 25.2774 5.02587 24.8648 5.1198 24.4713L6.8408 17.2113L1.21252
+                     12.3568C0.906468 12.0924 0.685123 11.7437 0.576132 11.3543C0.467141 10.9649 0.475333 10.5521 0.599686 10.1673C0.72404 9.78252 0.959043
+                     9.44289 1.27535 9.19083C1.59165 8.93876 1.97524 8.78543 2.3782 8.74998L9.75749 8.15488L12.6041 1.26878C12.7582 0.893491 13.0205 0.572479
+                     13.3575 0.346555C13.6946 0.12063 14.0913 0 14.4971 0C14.903 0 15.2996 0.12063 15.6367 0.346555C15.9738 0.572479 16.236 0.893491 16.3901
+                     1.26878L19.2355 8.15488L26.6148 8.74998C27.0186 8.78411 27.4033 8.93659 27.7207 9.18831C28.0382 9.44002 28.2743 9.77979 28.3994 10.165C28.5245
+                     10.5503 28.5331 10.9638 28.4241 11.354C28.3152 11.7441 28.0934 12.0934 27.7867 12.3581L27.7942 12.3568Z"
+                                    fill="#F1C644" />
+                    <p class="inline" th:text="${komentar.rating}"></p>
+
                 </div>
             </div>
         </div>
@@ -246,6 +233,50 @@
     </div>
     <!-- End of .container -->
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script>
+        const container = document.querySelector('.kontener-gambar');
+        let isDragging = false;
+        let startPosition = 0;
+        let deltaX = 0;
+
+        container.addEventListener('wheel', (event) => {
+
+            container.scrollLeft += event.deltaY;
+            event.preventDefault();
+        });
+        // Add event listeners for mouse down, move, and up
+        container.addEventListener('mousedown', startDrag);
+        container.addEventListener('mousemove', drag);
+        container.addEventListener('mouseup', endDrag);
+
+        // Function to start dragging
+        function startDrag(event) {
+            isDragging = true;
+            startPosition = event.clientX - container.offsetLeft;
+            container.classList.add('dragging');
+        }
+
+        // Function to handle dragging
+        function drag(event) {
+            if (!isDragging) return;
+            event.preventDefault();
+            const currentPosition = event.clientX - container.offsetLeft;
+            deltaX = startPosition - currentPosition;
+            container.scrollLeft += deltaX;
+            startPosition = currentPosition;
+        }
+
+        // Function to end dragging
+        function endDrag(event) {
+            isDragging = false;
+            container.classList.remove('dragging');
+        }
+
+        // Prevent text selection while dragging
+        container.addEventListener('selectstart', function (e) {
+            e.preventDefault();
+        });
+    </script>
 
 </body>
 

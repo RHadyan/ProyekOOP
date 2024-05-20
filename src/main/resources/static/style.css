@@ -262,6 +262,81 @@ body {
   background-color: #D9D9D9;
 }
 
-.sewa img{
+.sewa .fasilitas img{
   object-fit: cover;
+}
+
+/* rating bintang */
+.rating {
+  display: inline-block;
+}
+
+.rating input {
+
+  display: none;
+}
+
+.rating label {
+  float: right;
+  cursor: pointer;
+  color: #ccc;
+  transition: color 0.3s;
+}
+
+.rating label:before {
+  content: "\2605";
+  font-size: 30px;
+}
+
+.rating input:checked ~ label,
+.rating label:hover,
+.rating label:hover ~ label {
+  color: yellow;
+  transition: color 0.3s;
+}
+.sewa .kecil {
+  width: 50%;
+  background-color:black;
+  padding: 20px;
+  border-radius: 20px;
+}
+.textKomen{
+  font-size: 25px;
+}
+.textSubmit{
+  font-size: 20px;
+}
+.kontener-gambar {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+/**/
+.index .card-img-top {
+  width: 65%;
+  margin: 0 auto;
+}
+.index .card {
+  padding: 1.5em 0.5em 5em;
+  text-align: center;
+  border-radius: 2em;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+.index .card-title {
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.index .btn-primary {
+  border-radius: 2em;
+  padding: 0.5em 1.5em;
+}
+.span-star{
+  margin-top: 200px;
+}
+.inline {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 20px;
+  margin-left: 15px;
 }

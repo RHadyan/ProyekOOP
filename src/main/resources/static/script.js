@@ -142,4 +142,70 @@ $(document).ready(function () {
             }
         });
     });
+    $('.buton-fasilitas').on('click', function(event) {
+        event.preventDefault();
+        var href = $(this).attr('href');
+        $.get(href, function(fasilitasData) {
+            // Use the fasilitasData object instead of 'fasilitas'
+            $('#idEdit').val(fasilitasData.id);
+            $('#namefasilitas').text(fasilitasData.nameFasilitas);
+            $('#gambarBeforeEdit').val(fasilitasData.ImageFileName);
+            $('#gambarEdit').attr('src', '/images/' + fasilitasData.imageFileName);
+            console.log(fasilitasData.id);
+            console.log(fasilitasData.nameFasilitas);
+            console.log(fasilitasData.imageFileName);
+
+        });
+
+        $('#editModal').modal();
+    });
+
+    $('.buton-edit-komentar').on('click', function(event) {
+        event.preventDefault();
+
+        var href = $(this).attr('href');
+
+        $.get(href, function(komentarData) {
+            // Use the fasilitasData object instead of 'fasilitas'
+            $('#idEdit').val(komentarData.id);
+            $('#statusTampil option').each(function() {
+                if ($(this).val() == komentarData.statusTampil) {
+                    $(this).prop('selected', true);
+                }
+            });
+            console.log(komentarData.id);
+            console.log(komentarData.statusTampil)
+            console.log('Status dari database:', komentarData.statusTampil);
+            console.log('Nilai dropdown setelah di-set:', $('#status').val());
+
+        });
+        $('#editModal').modal();
+    });
+
+    $('#editForm-komentar').on('submit', function(event) {
+        event.preventDefault();
+
+        var formData = new FormData(this);
+
+        $.ajax({
+            url: $(this).attr('action'),
+            type: 'POST',
+            data: formData,
+            processData: false,  // jQuery tidak memproses data
+            contentType: false,  // jQuery tidak mengatur konten type
+            success: function(response) {
+                // Lakukan sesuatu setelah berhasil diupdate, seperti menutup modal dan refresh data
+                $('#editModal').modal('hide');
+                location.reload(); // Refresh halaman untuk melihat perubahan
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                for (const value of formData.values()) {
+                    console.log(value);
+                }
+                console.log("Error: " + textStatus + " " + errorThrown);
+                // Tampilkan pesan error atau lakukan sesuatu
+            }
+        });
+    });
+
 });

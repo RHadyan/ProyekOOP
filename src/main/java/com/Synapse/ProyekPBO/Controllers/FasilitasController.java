@@ -64,7 +64,6 @@ public String CreateFasilitas(
         try(InputStream inputStream = image.getInputStream()){
             Files.copy(inputStream, Paths.get(uploadDir + storageFileName),
                     StandardCopyOption.REPLACE_EXISTING);
-
         }
 
     }catch (Exception ex){

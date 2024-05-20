@@ -33,7 +33,7 @@ public class SecurityConfig {
         http.csrf(c -> c.disable())
                 .authorizeRequests()
                 .requestMatchers("/Admin","/Admin/","/fasilitas","/fasilitas/","/home","/home/","/kamar","/kamar/","/komentar","/komentar/").hasRole("ADMIN")
-                .requestMatchers("/login","/register","script.js","style.css","style-for-admin.css","/").permitAll()
+                .requestMatchers("/login","/register","script.js","style.css","style-for-admin.css","/","/fasilitasC","/sewaC").permitAll()
                 .and()
                 .formLogin(form -> form
                         .loginPage("/login")

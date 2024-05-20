@@ -11,175 +11,223 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="fasilitas" style="background-color: gray;">
-    <!-- Navbar -->
-    <div class="container-fluid nav-bg">
-        <nav class="navbar navbar-expand-lg">
-            <div class="container-fluid">
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <a class="navbar-brand" href="#">
-                        <img src="images/Logo.png" alt="Logo" width="270" height="66"
-                            class="d-inline-block align-text-top">
-                    </a>
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link active text-white" aria-current="page" href="/">Home</a>
+<body class="fasilitas" style="background-color:#D9D9D9;">
+<!-- Navbar -->
+<div class="container-fluid nav-bg">
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <a class="navbar-brand" href="#">
+                    <img src="images/Logo.png" alt="Logo" width="270" height="66"
+                         class="d-inline-block align-text-top">
+                </a>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active text-white" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active text-white" aria-current="page"
+                           href="/fasilitasC">Fasilitas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active text-white" aria-current="page" href="/sewaC">Sewa</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<!-- landing page -->
+<header class="header py-5">
+    <div class="container landingpage px-1 pb-5">
+        <div class="tab-pane fade active show" id="features-tab-1" role="tabpanel">
+            <div class="row">
+                <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
+                    <div class="fw-bolder"><h1 class="text-header-fasilitas d-inline">Fasilitas</h1></div>
+                    <h2 class="mt-2 text-header-kos">
+                        Kos-kosan
+                    </h2>
+                    <p>
+                        <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
+                        <span>Lorem Ipsum has been the industry's standard dummy</span>
+                    </p>
+                    <p>
+
+                    </p>
+                </div>
+                <div class="col-lg-6 order-1 order-lg-2 text-center">
+                    <img src="images/fasilitas-bg.jpeg" alt="" class="img-fluid rounded">
+                </div>
+            </div>
+        </div><!-- End tab content item -->
+    </div>
+</header>
+
+<!-- Fasilitas kamar kos -->
+<section class="fasilitas mt-5">
+    <div class="fasilitas-kamar-kos container rounded-pill p-3 text-center text-white">
+        <h1>Fasilitas Kamar kos</h1>
+    </div>
+    <div class="container text-center mt-5">
+        <p>Lorem ipsum dolor sit amet.</p>
+    </div>
+
+    <!-- gambar-gambar belom kelar -->
+    <div class="wrapper-photos">
+        <div class="container row mx-auto ">
+            <div th:each="fasilitas : ${fasilitass}" class="card card-home-photos pt-3 rounded-4 mx-auto mt-5  mb-5 col-md-4"
+                 style="width: 15rem;">
+                <a th:href="@{/fasilitas/edit/{id}(id=${fasilitas.id})}" class="buton-fasilitas"  data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                <img th:src="@{'/images/' + ${fasilitas.imageFileName}}" width="200px"  class="card-img-top" alt="...">
+                </a>
+                <div class="card-body text-center">
+                    <h5 th:text="${fasilitas.nameFasilitas}"></h5>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- Modal -->
+
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5"  id="namefasilitas"></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img src=""  id="gambarEdit" name="gambarEdit" class=" img-radius" width="100%" height="600px" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- rules -->
+<section>
+    <div class="container text-center mt-5 p-5">
+        <img src="images/warning-sign.png" width="9%" alt="">
+        <h2>Peraturan</h2>
+    </div>
+    <div class="row">
+        <div class="container-fluid list-peraturan p-5">
+            <div class="row">
+                <div class="col">
+                    <div class="rules">
+                        <div class="text-wrapper text-white">
+                            <ol>
+                                <li>Setiap penghuni kosan harus menaati peraturan yang kami buat.</li>
+                                <li>membayar kos tepat waktu setiap 3(tiga) bulan sekali.</li>
+                                <li>Menghemat pemakaian listrik dan air.</li>
+                                <li>Matikan listrik sebelum meninggalkan kamar.</li>
+                                <li>Berkelakuan baik, sopan, jujur dan kekeluargaan.</li>
+                                <li>Pria dilarang masuk ke dalam area kamar - kamar kos.</li>
+                                <li>berkewajiban membersihkan kamar dan kamar mandi masing - masing.</li>
+                                <li>turut menjaga kebersihan, keindahan, kenyamanan dan keamanan rumah kos.</li>
+                                <li>Dilarang memasak apapun di dalam kamar. Memasak di dapur yang telah disediakan.
+                                </li>
+                                <li>Selesai penghuni kos, yang menginap di kamar kos dikenakan biaya Rp
+                                    100.000,00/malam.</li>
+                                <li>Dilarang menyimpan apapun di koridor depan kamar.</li>
+                                <li>Menjemur cucian seperti pakaian, celana, sepatu dan lain lain di tempat yang
+                                    telah disediakan.</li>
+                                <li>Apabila ada kerusakan dikarenakan kesalahan penghuni kos, akan di kenakan biaya
+                                    sesuai kerusakan.</li>
+                                <li>Pemilik rumah berhak mengeluarkan penghuni kos apabila melakukan pelanggar.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 img-container">
+                    <img src="images/rules-bg.png" class="img-fluid" alt="Example Image">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<!-- footer -->
+
+
+
+
+
+
+
+
+<!-- Remove the container if you want to extend the Footer to full width. -->
+<div class="mt-5">
+    <footer style="background-color: #283618;">
+        <div class="container p-5">
+            <div class="row">
+                <div class="col-md-3 mb-4">
+                    <h5 class="mb-3 text-white"
+                        style="letter-spacing: 2px; padding-bottom: 20px; padding-top: 40px;">Privacy Policy</h5>
+                    <h5 class="mb-3 text-white" style="letter-spacing: 2px;">User Agreement</h5>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5 class="mb-3 text-white" style="letter-spacing: 2px; padding-bottom: 20px;">KONTEN</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-1 text-white">
+                            <a href="#!" class="list-footer text-white">Kos - kosan Profile</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link active text-white" aria-current="page"
-                               href="/fasilitasC">Fasilitas</a>
+                        <li class="mb-1 text-white">
+                            <a href="fasilitas.html" class="list-footer text-white">Fasilitas</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link active text-white" aria-current="page" href="/sewaC">Sewa</a>
+                        <li class="mb-1 text-white">
+                            <a href="sewa.html" class="list-footer text-white">Sewa</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5 class="mb-3 text-white" style="letter-spacing: 2px; padding-bottom: 20px;">LEGAL</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-1 text-white">
+                            <a href="#!" class="list-footer text-white">Terms of use</a>
+                        </li>
+                        <li class="mb-1 text-white">
+                            <a href="#!" class="list-footer text-white">License agreement</a>
+                        </li>
+                        <li class="mb-1 text-white">
+                            <a href="#!" class="list-footer text-white">Copyright information</a>
+                        </li>
+                        <li class="mb-1 text-white">
+                            <a href="#!" class="list-footer text-white">Cookies policy</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5 class="mb-3 text-white" style="letter-spacing: 2px; padding-bottom: 20px;">KONTAK INFORMASI
+                    </h5>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-1 text-white">
+                            <a href="tel:+08209030930" class="phone-link text-white">
+                                <img src="images/whatsapp.png" width="20" height="20" style="margin-right: 8px;"> +
+                                08209030930
+                            </a>
                         </li>
                     </ul>
                 </div>
             </div>
-        </nav>
-    </div>
-
-    <!-- landing page -->
-    <header class="header py-5">
-        <div class="container landingpage px-1 pb-5">
-            <div class="row align-items-center">
-                <div class="col-xxl-5">
-                    <div class="text-center text-xxl-start">
-                        <div class="fw-bolder"><span class="text-header-fasilitas d-inline">Fasilitas</span></div>
-                        <div class="text-center text-xxl-start">
-                            <h5 class="mt-2 text-header-kos">Kos - kosan</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xxl-7">
-                    <!-- Header text content-->
-                    <div class="row text-center">
-                        <div class="col-md-6">
-                            <img src="images/carrousel-1.png" width="300px" height="200px" alt="">
-                        </div>
-                        <div class="col-md-6 mt-5">
-                            <img src="images/carrousel-1.png" width="50%" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
-    </header>
-
-    <!-- Fasilitas kamar kos -->
-    <section class="fasilitas mt-5">
-        <div class="fasilitas-kamar-kos container rounded-pill p-3 text-center text-white">
-            <h1>Fasilitas Kamar kos</h1>
+        <div class="text-center p-4 text-white" style="background-image:url(images/footer.png)">
+            <img src="images/Logo.png" width="10%" alt="Logo"> Copyright © 2024 SYNAPSE All rights reserved.
         </div>
-        <div class="container text-center mt-5">
-            <p>Lorem ipsum dolor sit amet.</p>
-        </div>
+    </footer>
+</div>
 
-        <!-- gambar-gambar belom kelar -->
-        <div class="container">
-            <div class="row">
-                <div class="container col-md-5 bg-white shadow-lg text-center p-5">
-                    <img src="images/carrousel-1.png" width="55%" alt="">
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-
-
-
-
-    <!-- rules -->
-
-
-    <section>
-        <div class="container text-center mt-5 p-5">
-            <img src="images/warning-sign.png" width="9%" alt="">
-            <h2>Peraturan</h2>
-        </div>
-        <div class="row">
-            <div class="container-fluid list-peraturan p-5">
-                <div class="row">
-                    <div class="col">
-                        <ol class="rules text-white">
-                            <li>Setiap penghuni kosan harus menaati peraturan yang kami buat</li>
-                            <li>membayar kos tepat waktu setiap 3(tiga) bulan sekali</li>
-                            <li>Menghemat pemakaian listrik dan air</li>
-                            <li>Matikan listrik sebelum meninggalkan kamar</li>
-                            <li>Berkelakuan baik, sopan, jujur dan kekeluargaan</li>
-                            <li>Pria dilarang masuk ke dalam area kamar - kamar kos</li>
-                            <li>berkewajiban membersihkan kamar dan kamar mandi masing - masing</li>
-                            <li>turut menjaga kebersihan, keindahan, kenyamanan dan keamanan rumah kos.</li>
-                            <li>Dilarang memasak apapun di dalam kamar. Memasak di dapur yang telah disediakan</li>
-                            <li>Selesai penghuni kos, yang menginap di kamar kos dikenakan biaya Rp 100.000,00/malam
-                            </li>
-                            <li>Dilarang menyimpan apapun di koridor depan kamar</li>
-                            <li>Menjemur cucian seperti pakaian, celana, sepatu dan lain lain di tempat yang telah
-                                disediakan
-                            </li>
-                            <li>Apabila ada kerusakan dikarenakan kesalahan penghuni kos, akan di kenakan biaya sesuai kerusakan</li>
-                            <li>Pemilik rumah berhak mengeluarkan penghuni kos apabila melakukan pelanggar</li>
-                        </ol>
-                    </div>
-                    <div class="col-md-3">
-                        <img src="images/" class="img-fluid" height="100%" alt="Example Image">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-
-
-    <!-- footer -->
-
-
-
-
-
-
-
-
-    <!-- Remove the container if you want to extend the Footer to full width. -->
-    <div class="mt-5">
-        <footer style="background-color: #283618;">
-            <div class="container p-5">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 mb-4">
-                        <h5 class="mb-3 text-white" style="letter-spacing: 2px;">KONTEN</h5>
-                        <ul class="list-unstyled mb-0">
-                            <li class="mb-1  text-white">
-                                <a href="#!" class="list-footer text-white">Kos - kosan Profile</a>
-                            </li>
-                            <li class="mb-1  text-white">
-                                <a href="#!" class="list-footer text-white">Fasilitas</a>
-                            </li>
-                            <li class="mb-1  text-white">
-                                <a href="#!" class="list-footer text-white">Sewa</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-6 col-md-6 mb-4">
-                        <h5 class="mb-3 text-white" style="letter-spacing: 2px;">Kontak Informasi</h5>
-                        <ul class="list-unstyled mb-0">
-                            <li class="mb-1  text-white">
-                                <a href="#!" class="list-footer text-white">Kos - kosan Profile</a>
-                            </li>
-                        </ul>
-                    </div>
-
-                </div>
-            </div>
-            <div class="text-center p-4 text-white" style="background-color: rgba(0, 0, 0, 0.2);">
-                <img src="images/Logo.png" width="10%" alt=""> Copyright © 2024 SYNAPSE All rights reserved.
-            </div>
-            <!-- Copyright -->
-        </footer>
-
-    </div>
-    <!-- End of .container -->
-    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<!-- End of .container -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+</script>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script src="script.js"></script>
 
 </body>
 

@@ -123,7 +123,6 @@ public class HomeController {
             try {
                 HomeModels home = repo.findById(id).orElseThrow(() -> new RuntimeException("Fasilitas not found"));
 
-                // Update nama fasilitas
 
                 // Jika ada file gambar baru, simpan file baru dan update nama file
                 if (!imageFileName.isEmpty()) {
